@@ -27,6 +27,6 @@ const Category = () => {
       </CategoryContainer>
     </Fragment>
   );
-};
+}; 
 
 export default Category;
