@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState,useEffect } from 'react';
+import { useDispatch,useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 
 import FormInput from '../form-input/form-input.component';
 import Button from '../button/button.component';
@@ -9,8 +10,10 @@ import Button from '../button/button.component';
 //   createUserDocumentFromAuth,
 // } from '../../utils/firebase/firebase.utils';
 
+
 import { SignUpContainer } from './sign-up-form.styles';
 import { signUpStart } from '../../store/user/user.action';
+import { selectCurrentUser } from '../../store/user/user.selector';
 
 const defaultFormFields = {
   displayName: '',
@@ -23,10 +26,23 @@ const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
   const dispatch = useDispatch();
+  const history = useNavigate();
+  const currentUser = useSelector(selectCurrentUser);
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
+
+  useEffect(() => {
+    //whenever signinsuccess is true
+    if (currentUser) {
+     
+
+      history("/")
+    }
+    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentUser]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
