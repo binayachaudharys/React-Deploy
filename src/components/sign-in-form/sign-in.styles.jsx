@@ -10,7 +10,7 @@ export const SignInTitle = styled.h2`
   margin: 10px 0;
 `;
 
-export const ButtonsContainer = styled.div`
+export const ButtonsBarContainer = styled.div`
   display: flex;
   justify-content: space-between;
 `;

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { Routes, Route } from 'react-router-dom';
+// import { GlobalStyle } from './global.styles';
 
 import Home from './routes/home/home.component';
 import Navigation from './routes/navigation/navigation.component';
@@ -13,9 +14,10 @@ import { checkUserSession } from './store/user/user.action';
 const App = () => {
   const dispatch = useDispatch();
 
+
   useEffect(() => {
     dispatch(checkUserSession());
-  }, []);
+  }, [ dispatch]);
 
   return (
     <Routes>
